@@ -67,6 +67,30 @@ void room_control_on_uart_receive(char cmd)
             uart2_send_string("Lámpara apagada.\r\n");
             break;
 
+        case 's':
+            tim3_ch1_pwm_set_duty_cycle(70);
+            uart2_send_string("Estado: \r\n  - lampara: 70%\r\n  - Puerta: Cerrada");
+            break;
+
+        case '?':
+            uart2_send_string("Comandos disponibles: \r\n  '1'-'4': Ajustar brillo lámpara (100%, 70%, 50%, 20%)\r\n  '0'   : Apagar lámpara\r\n  'o'   : Abrir puerta\r\n  'c'   : Cerrar puerta\r\n  's'   : Estado del sistema\r\n  '?'   : Ayuda\r\n");
+            break;
+
+        case 'g':
+            tim3_ch1_pwm_set_duty_cycle(0);
+            tim3_ch1_pwm_set_duty_cycle(10);
+            tim3_ch1_pwm_set_duty_cycle(20);
+            tim3_ch1_pwm_set_duty_cycle(30);
+            tim3_ch1_pwm_set_duty_cycle(40);
+            tim3_ch1_pwm_set_duty_cycle(50);
+            tim3_ch1_pwm_set_duty_cycle(60);
+            tim3_ch1_pwm_set_duty_cycle(70);
+            tim3_ch1_pwm_set_duty_cycle(80);
+            tim3_ch1_pwm_set_duty_cycle(90);
+            tim3_ch1_pwm_set_duty_cycle(100);
+            uart2_send_string("Aumento gradualmente en pasos de 10 en 10  \r\n");
+            break;
+
         case 'o':
         case 'O':
             gpio_write_pin(EXTERNAL_LED_ONOFF_PORT, EXTERNAL_LED_ONOFF_PIN, GPIO_PIN_SET);

@@ -53,7 +53,7 @@ int main(void)
     room_control_app_init();
 
     // Mensaje de bienvenida o estado inicial (puede estar en room_control_app_init o aquí)
-    uart2_send_string("\r\nSistema Inicializado. Esperando eventos...\r\n");
+    uart2_send_string("Controlador de sala v1.0\r\n  Desarrollador:Juan Esteban Mora\r\n  Estado inicial:\r\n  - Lámpara: 20%\r\n  - Puerta: Cerrada\r\n ");
     while (1) {
         heartbeat_led_toggle();
     }
